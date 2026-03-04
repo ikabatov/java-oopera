@@ -18,14 +18,11 @@ public class Actor extends Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Actor actor = (Actor) o;
-        return  getName().equals(actor.getName()) &&
-                getSurname().equals(actor.getSurname()) &&
-                height == actor.height;
-
+        return super.equals(o) && height == actor.height;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getSurname(), height);
+        return Objects.hash(super.hashCode(), height);
     }
 }

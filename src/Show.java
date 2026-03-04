@@ -28,17 +28,27 @@ public class Show {
     }
 
     public void replaceActor(Actor newActor, String surname) {
-        boolean found = false;
+        int index = 0;
+        int amountSurname = 0;
         for (int i = 0; i < listOfActors.size(); i++) {
             Actor actor = listOfActors.get(i);
             if (actor.getSurname().equals(surname)) {
-                listOfActors.set(i, newActor);
-                found = true;
+                amountSurname += 1;
+                index = i;
             }
         }
-        if (!found) {
+
+        if (amountSurname == 0) {
             System.out.println("Актёр с фамилией " + surname + " не найден в спектакле");
+        } else if (amountSurname == 1) {
+            listOfActors.set(index, newActor);
+        } else {
+            System.out.println("Найдено несколько актёров с фамилией " + surname + ". Замена не выполнена.");
         }
+    }
+
+    public void printFullNameDirector() {
+        director.printFullName();
     }
 }
 
